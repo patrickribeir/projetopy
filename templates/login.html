@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card bg-secondary text-light shadow-lg rounded-3 glassmorphism-card"> {# Aplicada a classe #}
+            <div class="card-header text-center">
+                <h2 class="card-title text-white mb-0 fs-3 fw-bold"><i class="bi bi-box-arrow-in-right me-2"></i>Login</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('login') }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="mb-3">
+                        <label for="identifier" class="form-label">Username ou Email:</label>
+                        <input type="text" class="form-control bg-dark text-light border-secondary rounded-pill" id="identifier" name="identifier" required> {# rounded-pill #}
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Senha:</label>
+                        <input type="password" class="form-control bg-dark text-light border-secondary rounded-pill" id="password" name="password" required> {# rounded-pill #}
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill">Entrar</button> {# rounded-pill #}
+                    </div>
+                </form>
+                <p class="mt-4 text-center text-light">Não tem uma conta? <a href="{{ url_for('register') }}" class="text-info">Registe-se aqui</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
